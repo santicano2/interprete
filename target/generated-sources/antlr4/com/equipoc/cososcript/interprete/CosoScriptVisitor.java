@@ -1,12 +1,5 @@
 // Generated from com\equipoc\cososcript\interprete\CosoScript.g4 by ANTLR 4.5.1
 package com.equipoc.cososcript.interprete;
-
-	import java.util.Map;
-	import java.util.HashMap;
-	import java.util.List;
-	import java.util.ArrayList;
-	import com.equipoc.cososcript.interprete.ast.*;
-
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -24,11 +17,11 @@ public interface CosoScriptVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitPrograma(CosoScriptParser.ProgramaContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link CosoScriptParser#s}.
+	 * Visit a parse tree produced by {@link CosoScriptParser#sentencia}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitS(CosoScriptParser.SContext ctx);
+	T visitSentencia(CosoScriptParser.SentenciaContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link CosoScriptParser#declaracion}.
 	 * @param ctx the parse tree

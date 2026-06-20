@@ -20,6 +20,9 @@ public class Main {
 
         CosoScriptParser.ProgramaContext tree = parser.programa();
 
+        CosoScriptCustomVisitor visitor = new CosoScriptCustomVisitor();
+        visitor.visit(tree);
+
         System.out.println("Interpretation finished");
     }
 }

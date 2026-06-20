@@ -9,7 +9,6 @@ com\equipoc\cososcript\interprete\CosoScriptParser$BooleanoContext.class
 com\equipoc\cososcript\interprete\CosoScriptParser$PrimariaContext.class
 com\equipoc\cososcript\interprete\CosoScriptBaseVisitor.class
 com\equipoc\cososcript\interprete\CosoScriptParser$MultiplicativaContext.class
-com\equipoc\cososcript\interprete\CosoScriptParser$SContext.class
 com\equipoc\cososcript\interprete\CosoScriptParser$IgualdadContext.class
 com\equipoc\cososcript\interprete\CosoScriptParser$PostfijaContext.class
 com\equipoc\cososcript\interprete\CosoScriptParser$ComparacionContext.class
@@ -17,9 +16,11 @@ com\equipoc\cososcript\interprete\ast\BinOp.class
 com\equipoc\cososcript\interprete\ast\Println.class
 com\equipoc\cososcript\interprete\ast\UnOp.class
 com\equipoc\cososcript\interprete\CosoScriptParser$Logica_oContext.class
+com\equipoc\cososcript\interprete\SymbolTable.class
 com\equipoc\cososcript\interprete\CosoScriptParser$AditivaContext.class
 com\equipoc\cososcript\interprete\CosoScriptParser.class
 com\equipoc\cososcript\interprete\ast\Literal.class
+com\equipoc\cososcript\interprete\CosoScriptParser$SentenciaContext.class
 com\equipoc\cososcript\interprete\CosoScriptListener.class
 com\equipoc\cososcript\interprete\ast\VarAssign.class
 com\equipoc\cososcript\interprete\CosoScriptParser$DeclaracionContext.class

@@ -1,12 +1,5 @@
 // Generated from com\equipoc\cososcript\interprete\CosoScript.g4 by ANTLR 4.5.1
 package com.equipoc.cososcript.interprete;
-
-	import java.util.Map;
-	import java.util.HashMap;
-	import java.util.List;
-	import java.util.ArrayList;
-	import com.equipoc.cososcript.interprete.ast.*;
-
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
 /**
@@ -31,7 +24,7 @@ public class CosoScriptBaseVisitor<T> extends AbstractParseTreeVisitor<T> implem
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitS(CosoScriptParser.SContext ctx) { return visitChildren(ctx); }
+	@Override public T visitSentencia(CosoScriptParser.SentenciaContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

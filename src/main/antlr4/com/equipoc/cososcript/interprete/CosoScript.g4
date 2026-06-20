@@ -1,167 +1,60 @@
 grammar CosoScript;
 
-@parser::header {
-	import java.util.Map;
-	import java.util.HashMap;
-	import java.util.List;
-	import java.util.ArrayList;
-	import com.equipoc.cososcript.interprete.ast.*;
-}
-
-@parser::members {
-	Map<String, Object> symbolTable = new HashMap<String, Object>();
-}
-
 // REGLAS SINTÁCTICAS
-programa:
-	{
-		List<ASTNode> body = new ArrayList<ASTNode>();
-	}
-	(s {body.add($s.node);})* EOF
-	{
-		for (ASTNode n : body) {
-			n.execute(symbolTable);
-		}
-	}
-	;
+programa: sentencia* EOF;
 
-s returns [ASTNode node]:
-	declaracion {$node = $declaracion.node;}
-	| asignacion {$node = $asignacion.node;}
-	| mostrar {$node = $mostrar.node;}
-	| condicional {$node = $condicional.node;}
-	| repetir {$node = $repetir.node;}
-	;
+sentencia: declaracion
+         | asignacion
+         | mostrar
+         | condicional
+         | repetir
+         ;
 
-declaracion returns [ASTNode node]:
-	COSO ID COLON t=tipo ASIGN exp=expresion PUNTO_COMA
-	{$node = new VarDecl($ID.text, $t.tipoVar, $exp.node);}
-	;
+declaracion: COSO ID COLON tipo (ASIGN expresion)? PUNTO_COMA;
 
-asignacion returns [ASTNode node]:
-	ID ASIGN exp=expresion PUNTO_COMA
-	{$node = new VarAssign($ID.text, $exp.node);}
-	;
+asignacion: ID ASIGN expresion PUNTO_COMA;
 
-mostrar returns [ASTNode node]:
-	MOSTRAR PAREN_IZQD exp=expresion PAREN_DER PUNTO_COMA
-	{$node = new Println($exp.node);}
-	;
+mostrar: MOSTRAR PAREN_IZQD expresion PAREN_DER PUNTO_COMA;
 
-condicional returns [ASTNode node]:
-	SI PAREN_IZQD cond=expresion PAREN_DER
-	{
-		List<ASTNode> thenBody = new ArrayList<ASTNode>();
-	}
-	LLAVE_IZQD (s1=s {thenBody.add($s1.node);})* LLAVE_DER
-	{
-		List<ASTNode> elseBody = new ArrayList<ASTNode>();
-	}
-	(SINO LLAVE_IZQD (s2=s {elseBody.add($s2.node);})* LLAVE_DER)?
-	{
-		$node = new If($cond.node, thenBody, elseBody);
-	}
-	;
+condicional: SI PAREN_IZQD expresion PAREN_DER
+             LLAVE_IZQD entonces+=sentencia* LLAVE_DER
+             (SINO LLAVE_IZQD sino+=sentencia* LLAVE_DER)?;
 
-repetir returns [ASTNode node]:
-	REPETIR
-	{
-		List<ASTNode> body = new ArrayList<ASTNode>();
-	}
-	LLAVE_IZQD (s1=s {body.add($s1.node);})* LLAVE_DER
-	HASTA PAREN_IZQD cond=expresion PAREN_DER PUNTO_COMA
-	{
-		$node = new Repeat(body, $cond.node);
-	}
-	;
+repetir: REPETIR LLAVE_IZQD sentencia* LLAVE_DER
+         HASTA PAREN_IZQD expresion PAREN_DER PUNTO_COMA;
 
-expresion returns [ASTNode node]:
-	logica_o {$node = $logica_o.node;}
-	;
+expresion: logica_o;
 
-logica_o returns [ASTNode node]:
-	t1=logica_y {$node = $t1.node;}
-	(O t2=logica_y {$node = new BinOp($node, "||", $t2.node);})*
-	;
+logica_o: logica_y (O logica_y)*;
 
-logica_y returns [ASTNode node]:
-	t1=igualdad {$node = $t1.node;}
-	(Y t2=igualdad {$node = new BinOp($node, "&&", $t2.node);})*
-	;
+logica_y: igualdad (Y igualdad)*;
 
-igualdad returns [ASTNode node]:
-	t1=comparacion {$node = $t1.node;}
-	(op=(IGUAL | NO_IGUAL) t2=comparacion {$node = new BinOp($node, $op.text, $t2.node);})*
-	;
+igualdad: comparacion ((IGUAL | NO_IGUAL) comparacion)*;
 
-comparacion returns [ASTNode node]:
-	t1=aditiva {$node = $t1.node;}
-	(op=(MENOR | MENOR_IGUAL | MAYOR | MAYOR_IGUAL) t2=aditiva {$node = new BinOp($node, $op.text, $t2.node);})*
-	;
+comparacion: aditiva ((MENOR | MENOR_IGUAL | MAYOR | MAYOR_IGUAL) aditiva)*;
 
-aditiva returns [ASTNode node]:
-	t1=multiplicativa {$node = $t1.node;}
-	(op=(MAS | MENOS) t2=multiplicativa {$node = new BinOp($node, $op.text, $t2.node);})*
-	;
+aditiva: multiplicativa ((MAS | MENOS) multiplicativa)*;
 
-multiplicativa returns [ASTNode node]:
-	t1=unaria {$node = $t1.node;}
-	(op=(MULT | DIV) t2=unaria {$node = new BinOp($node, $op.text, $t2.node);})*
-	;
+multiplicativa: unaria ((MULT | DIV) unaria)*;
 
-unaria returns [ASTNode node]:
-	(op=(NO | MENOS))? t1=postfija
-	{
-		if ($op != null) {
-			$node = new UnOp($op.text, $t1.node);
-		} else {
-			$node = $t1.node;
-		}
-	}
-	;
+unaria: (NO | MENOS)? postfija;
 
-postfija returns [ASTNode node]:
-	primaria {$node = $primaria.node;}
-	;
+postfija: primaria;
 
-primaria returns [ASTNode node]:
-	numero {$node = $numero.node;}
-	| cadena {$node = $cadena.node;}
-	| ID {$node = new VarRef($ID.text);}
-	| booleano {$node = $booleano.node;}
-	| PAREN_IZQD exp=expresion PAREN_DER {$node = $exp.node;}
-	;
+primaria: numero
+        | cadena
+        | ID
+        | booleano
+        | PAREN_IZQD expresion PAREN_DER
+        ;
 
-numero returns [ASTNode node]:
-	n=NUMERO
-	{
-		if ($n.text.contains(".")) {
-			$node = new Literal(Double.parseDouble($n.text));
-		} else {
-			$node = new Literal(Integer.parseInt($n.text));
-		}
-	}
-	;
+numero: NUMERO;
 
-cadena returns [ASTNode node]:
-	c=CADENA
-	{
-		String val = $c.text;
-		$node = new Literal(val.substring(1, val.length() - 1));
-	}
-	;
+cadena: CADENA;
 
-booleano returns [ASTNode node]:
-	VERDADERO {$node = new Literal(Boolean.TRUE);}
-	| FALSO {$node = new Literal(Boolean.FALSE);}
-	;
+booleano: VERDADERO | FALSO;
 
-tipo returns [String tipoVar]:
-	ENTERO {$tipoVar = "entero";}
-	| REAL {$tipoVar = "real";}
-	| CADENA_TIPO {$tipoVar = "cadena";}
-	| LOGICO_TIPO {$tipoVar = "logico";}
-	;
+tipo: ENTERO | REAL | CADENA_TIPO | LOGICO_TIPO;
 
 // TOKENS - PALABRAS CLAVE
 COSO: 'coso';

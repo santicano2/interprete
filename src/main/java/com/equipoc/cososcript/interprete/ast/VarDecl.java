@@ -2,64 +2,54 @@ package com.equipoc.cososcript.interprete.ast;
 
 import java.util.Map;
 
-/**
- * Nodo AST para declaración de variables.
- * Ejemplo: coso contador : entero = 0;
- */
 public class VarDecl implements ASTNode {
-	private String nombre;
-	private String tipo;
-	private ASTNode valor;
+    private String nombre;
+    private String tipo;
+    private ASTNode valor;
 
-	public VarDecl(String nombre, String tipo, ASTNode valor) {
-		this.nombre = nombre;
-		this.tipo = tipo;
-		this.valor = valor;
-	}
+    public VarDecl(String nombre, String tipo, ASTNode valor) {
+        this.nombre = nombre;
+        this.tipo = tipo;
+        this.valor = valor;
+    }
 
-	@Override
-	public Object execute(Map<String, Object> symbolTable) {
-		// Verificar si la variable ya existe
-		if (symbolTable.containsKey(nombre)) {
-			throw new RuntimeException("Error semántico: Variable '" + nombre + "' ya fue declarada");
-		}
+    @Override
+    public Object execute(Map<String, Object> symbolTable) {
+        if (symbolTable.containsKey(nombre)) {
+            throw new RuntimeException("Error semantico: Variable '" + nombre + "' ya fue declarada");
+        }
 
-		// Evaluar la expresión inicial
-		Object val = valor.execute(symbolTable);
+        Object val;
+        if (valor != null) {
+            val = valor.execute(symbolTable);
+            if (!validarTipo(tipo, val)) {
+                throw new RuntimeException("Error semantico: Tipo incompatible para variable '" + nombre + "'");
+            }
+        } else {
+            val = valorDefault(tipo);
+        }
 
-		// Validar que el tipo coincida (validación semántica básica)
-		if (!validarTipo(tipo, val)) {
-			throw new RuntimeException("Error semántico: Incompatibilidad de tipos para variable '" + nombre + "'");
-		}
+        symbolTable.put(nombre, val);
+        return null;
+    }
 
-		// Guardar en la tabla de símbolos
-		symbolTable.put(nombre, val);
-		return null;
-	}
+    private Object valorDefault(String tipo) {
+        switch (tipo) {
+        case "entero": return 0;
+        case "real": return 0.0;
+        case "cadena": return "";
+        case "logico": return false;
+        default: return null;
+        }
+    }
 
-	/**
-	 * Valida que el valor sea compatible con el tipo declarado.
-	 */
-	private boolean validarTipo(String tipo, Object valor) {
-		switch (tipo) {
-		case "entero":
-			return valor instanceof Integer;
-		case "real":
-			return valor instanceof Double || valor instanceof Integer;
-		case "cadena":
-			return valor instanceof String;
-		case "logico":
-			return valor instanceof Boolean;
-		default:
-			return false;
-		}
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public String getTipo() {
-		return tipo;
-	}
+    private boolean validarTipo(String tipo, Object valor) {
+        switch (tipo) {
+        case "entero": return valor instanceof Integer;
+        case "real": return valor instanceof Double || valor instanceof Integer;
+        case "cadena": return valor instanceof String;
+        case "logico": return valor instanceof Boolean;
+        default: return false;
+        }
+    }
 }
