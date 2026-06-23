@@ -1,4 +1,3 @@
-// CosoScript - Programa de prueba
 coso contador : entero = 0;
 
 repetir {

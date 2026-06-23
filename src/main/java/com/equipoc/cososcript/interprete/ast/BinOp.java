@@ -23,7 +23,7 @@ public class BinOp implements ASTNode {
 		Object valDer = derecha.execute(symbolTable);
 
 		switch (operador) {
-		// Operadores aritméticos
+		// Operadores aritmeticos
 		case "+":
 			return sumar(valIzq, valDer);
 		case "-":
@@ -47,7 +47,7 @@ public class BinOp implements ASTNode {
 		case ">=":
 			return compararMayorIgual(valIzq, valDer);
 
-		// Operadores lógicos
+		// Operadores logicos
 		case "&&":
 			return ((Boolean) valIzq) && ((Boolean) valDer);
 		case "||":
@@ -70,7 +70,7 @@ public class BinOp implements ASTNode {
 		if (izq instanceof String || der instanceof String) {
 			return izq.toString() + der.toString();
 		}
-		throw new RuntimeException("Error semántico: No se puede sumar " + izq.getClass().getSimpleName() + " y "
+		throw new RuntimeException("Error semantico: No se puede sumar " + izq.getClass().getSimpleName() + " y "
 				+ der.getClass().getSimpleName());
 	}
 
@@ -83,7 +83,7 @@ public class BinOp implements ASTNode {
 			double d2 = der instanceof Double ? (Double) der : ((Integer) der).doubleValue();
 			return d1 - d2;
 		}
-		throw new RuntimeException("Error semántico: No se puede restar " + izq.getClass().getSimpleName() + " y "
+		throw new RuntimeException("Error semantico: No se puede restar " + izq.getClass().getSimpleName() + " y "
 				+ der.getClass().getSimpleName());
 	}
 
@@ -96,14 +96,14 @@ public class BinOp implements ASTNode {
 			double d2 = der instanceof Double ? (Double) der : ((Integer) der).doubleValue();
 			return d1 * d2;
 		}
-		throw new RuntimeException("Error semántico: No se puede multiplicar " + izq.getClass().getSimpleName() + " y "
+		throw new RuntimeException("Error semantico: No se puede multiplicar " + izq.getClass().getSimpleName() + " y "
 				+ der.getClass().getSimpleName());
 	}
 
 	private Object dividir(Object izq, Object der) {
-		// Validar división por cero
+		// Validar division por cero
 		if ((der instanceof Integer && (Integer) der == 0) || (der instanceof Double && (Double) der == 0.0)) {
-			throw new RuntimeException("Error semántico: División por cero");
+			throw new RuntimeException("Error semantico: División por cero");
 		}
 
 		if (izq instanceof Integer && der instanceof Integer) {
@@ -114,7 +114,7 @@ public class BinOp implements ASTNode {
 			double d2 = der instanceof Double ? (Double) der : ((Integer) der).doubleValue();
 			return d1 / d2;
 		}
-		throw new RuntimeException("Error semántico: No se puede dividir " + izq.getClass().getSimpleName() + " y "
+		throw new RuntimeException("Error semantico: No se puede dividir " + izq.getClass().getSimpleName() + " y "
 				+ der.getClass().getSimpleName());
 	}
 
@@ -127,7 +127,7 @@ public class BinOp implements ASTNode {
 			double d2 = der instanceof Double ? (Double) der : ((Integer) der).doubleValue();
 			return d1 < d2;
 		}
-		throw new RuntimeException("Error semántico: No se puede comparar");
+		throw new RuntimeException("Error semantico: No se puede comparar");
 	}
 
 	private boolean compararMenorIgual(Object izq, Object der) {
@@ -139,7 +139,7 @@ public class BinOp implements ASTNode {
 			double d2 = der instanceof Double ? (Double) der : ((Integer) der).doubleValue();
 			return d1 <= d2;
 		}
-		throw new RuntimeException("Error semántico: No se puede comparar");
+		throw new RuntimeException("Error semantico: No se puede comparar");
 	}
 
 	private boolean compararMayor(Object izq, Object der) {
@@ -151,7 +151,7 @@ public class BinOp implements ASTNode {
 			double d2 = der instanceof Double ? (Double) der : ((Integer) der).doubleValue();
 			return d1 > d2;
 		}
-		throw new RuntimeException("Error semántico: No se puede comparar");
+		throw new RuntimeException("Error semantico: No se puede comparar");
 	}
 
 	private boolean compararMayorIgual(Object izq, Object der) {
@@ -163,10 +163,13 @@ public class BinOp implements ASTNode {
 			double d2 = der instanceof Double ? (Double) der : ((Integer) der).doubleValue();
 			return d1 >= d2;
 		}
-		throw new RuntimeException("Error semántico: No se puede comparar");
+		throw new RuntimeException("Error semantico: No se puede comparar");
 	}
 
 	public String getOperador() {
 		return operador;
 	}
+
+	public ASTNode getIzquierda() { return izquierda; }
+	public ASTNode getDerecha() { return derecha; }
 }

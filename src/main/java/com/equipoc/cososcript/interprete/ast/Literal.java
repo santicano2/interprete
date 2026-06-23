@@ -3,7 +3,7 @@ package com.equipoc.cososcript.interprete.ast;
 import java.util.Map;
 
 /**
- * Nodo AST para literales (valores constantes).
+ * Nodo AST para literales o valores constantes.
  * Ejemplos: 42, 3.14, "texto", verdadero, falso
  */
 public class Literal implements ASTNode {

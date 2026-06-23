@@ -1,7 +1,8 @@
-// Generated from com\equipoc\cososcript\interprete\CosoScript.g4 by ANTLR 4.5.1
+// Generated from CosoScript.g4 by ANTLR 4.4
 package com.equipoc.cososcript.interprete;
 
 import org.antlr.v4.runtime.ParserRuleContext;
+import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
@@ -16,276 +17,276 @@ public class CosoScriptBaseListener implements CosoScriptListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPrograma(CosoScriptParser.ProgramaContext ctx) { }
+	@Override public void enterUnaria(@NotNull CosoScriptParser.UnariaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPrograma(CosoScriptParser.ProgramaContext ctx) { }
+	@Override public void exitUnaria(@NotNull CosoScriptParser.UnariaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSentencia(CosoScriptParser.SentenciaContext ctx) { }
+	@Override public void enterAsignacion(@NotNull CosoScriptParser.AsignacionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSentencia(CosoScriptParser.SentenciaContext ctx) { }
+	@Override public void exitAsignacion(@NotNull CosoScriptParser.AsignacionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDeclaracion(CosoScriptParser.DeclaracionContext ctx) { }
+	@Override public void enterTipo(@NotNull CosoScriptParser.TipoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDeclaracion(CosoScriptParser.DeclaracionContext ctx) { }
+	@Override public void exitTipo(@NotNull CosoScriptParser.TipoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAsignacion(CosoScriptParser.AsignacionContext ctx) { }
+	@Override public void enterDeclaracion(@NotNull CosoScriptParser.DeclaracionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAsignacion(CosoScriptParser.AsignacionContext ctx) { }
+	@Override public void exitDeclaracion(@NotNull CosoScriptParser.DeclaracionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMostrar(CosoScriptParser.MostrarContext ctx) { }
+	@Override public void enterNumero(@NotNull CosoScriptParser.NumeroContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMostrar(CosoScriptParser.MostrarContext ctx) { }
+	@Override public void exitNumero(@NotNull CosoScriptParser.NumeroContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCondicional(CosoScriptParser.CondicionalContext ctx) { }
+	@Override public void enterCadena(@NotNull CosoScriptParser.CadenaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCondicional(CosoScriptParser.CondicionalContext ctx) { }
+	@Override public void exitCadena(@NotNull CosoScriptParser.CadenaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterRepetir(CosoScriptParser.RepetirContext ctx) { }
+	@Override public void enterIgualdad(@NotNull CosoScriptParser.IgualdadContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitRepetir(CosoScriptParser.RepetirContext ctx) { }
+	@Override public void exitIgualdad(@NotNull CosoScriptParser.IgualdadContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExpresion(CosoScriptParser.ExpresionContext ctx) { }
+	@Override public void enterPrograma(@NotNull CosoScriptParser.ProgramaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExpresion(CosoScriptParser.ExpresionContext ctx) { }
+	@Override public void exitPrograma(@NotNull CosoScriptParser.ProgramaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLogica_o(CosoScriptParser.Logica_oContext ctx) { }
+	@Override public void enterPrimaria(@NotNull CosoScriptParser.PrimariaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLogica_o(CosoScriptParser.Logica_oContext ctx) { }
+	@Override public void exitPrimaria(@NotNull CosoScriptParser.PrimariaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLogica_y(CosoScriptParser.Logica_yContext ctx) { }
+	@Override public void enterSentencia(@NotNull CosoScriptParser.SentenciaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLogica_y(CosoScriptParser.Logica_yContext ctx) { }
+	@Override public void exitSentencia(@NotNull CosoScriptParser.SentenciaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterIgualdad(CosoScriptParser.IgualdadContext ctx) { }
+	@Override public void enterRepetir(@NotNull CosoScriptParser.RepetirContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitIgualdad(CosoScriptParser.IgualdadContext ctx) { }
+	@Override public void exitRepetir(@NotNull CosoScriptParser.RepetirContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterComparacion(CosoScriptParser.ComparacionContext ctx) { }
+	@Override public void enterMultiplicativa(@NotNull CosoScriptParser.MultiplicativaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitComparacion(CosoScriptParser.ComparacionContext ctx) { }
+	@Override public void exitMultiplicativa(@NotNull CosoScriptParser.MultiplicativaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAditiva(CosoScriptParser.AditivaContext ctx) { }
+	@Override public void enterExpresion(@NotNull CosoScriptParser.ExpresionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAditiva(CosoScriptParser.AditivaContext ctx) { }
+	@Override public void exitExpresion(@NotNull CosoScriptParser.ExpresionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMultiplicativa(CosoScriptParser.MultiplicativaContext ctx) { }
+	@Override public void enterBooleano(@NotNull CosoScriptParser.BooleanoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMultiplicativa(CosoScriptParser.MultiplicativaContext ctx) { }
+	@Override public void exitBooleano(@NotNull CosoScriptParser.BooleanoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterUnaria(CosoScriptParser.UnariaContext ctx) { }
+	@Override public void enterLogica_y(@NotNull CosoScriptParser.Logica_yContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitUnaria(CosoScriptParser.UnariaContext ctx) { }
+	@Override public void exitLogica_y(@NotNull CosoScriptParser.Logica_yContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPostfija(CosoScriptParser.PostfijaContext ctx) { }
+	@Override public void enterCondicional(@NotNull CosoScriptParser.CondicionalContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPostfija(CosoScriptParser.PostfijaContext ctx) { }
+	@Override public void exitCondicional(@NotNull CosoScriptParser.CondicionalContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPrimaria(CosoScriptParser.PrimariaContext ctx) { }
+	@Override public void enterLogica_o(@NotNull CosoScriptParser.Logica_oContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPrimaria(CosoScriptParser.PrimariaContext ctx) { }
+	@Override public void exitLogica_o(@NotNull CosoScriptParser.Logica_oContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNumero(CosoScriptParser.NumeroContext ctx) { }
+	@Override public void enterAditiva(@NotNull CosoScriptParser.AditivaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNumero(CosoScriptParser.NumeroContext ctx) { }
+	@Override public void exitAditiva(@NotNull CosoScriptParser.AditivaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCadena(CosoScriptParser.CadenaContext ctx) { }
+	@Override public void enterMostrar(@NotNull CosoScriptParser.MostrarContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCadena(CosoScriptParser.CadenaContext ctx) { }
+	@Override public void exitMostrar(@NotNull CosoScriptParser.MostrarContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBooleano(CosoScriptParser.BooleanoContext ctx) { }
+	@Override public void enterComparacion(@NotNull CosoScriptParser.ComparacionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBooleano(CosoScriptParser.BooleanoContext ctx) { }
+	@Override public void exitComparacion(@NotNull CosoScriptParser.ComparacionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTipo(CosoScriptParser.TipoContext ctx) { }
+	@Override public void enterPostfija(@NotNull CosoScriptParser.PostfijaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTipo(CosoScriptParser.TipoContext ctx) { }
+	@Override public void exitPostfija(@NotNull CosoScriptParser.PostfijaContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEveryRule(ParserRuleContext ctx) { }
+	@Override public void enterEveryRule(@NotNull ParserRuleContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEveryRule(ParserRuleContext ctx) { }
+	@Override public void exitEveryRule(@NotNull ParserRuleContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void visitTerminal(TerminalNode node) { }
+	@Override public void visitTerminal(@NotNull TerminalNode node) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void visitErrorNode(ErrorNode node) { }
+	@Override public void visitErrorNode(@NotNull ErrorNode node) { }
 }

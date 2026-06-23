@@ -4,7 +4,7 @@ import java.util.Map;
 
 /**
  * Nodo AST para referencia a variables.
- * Ejemplo: contador (cuando se usa en una expresión)
+ * Ejemplo: contador (cuando se usa en una expresion)
  */
 public class VarRef implements ASTNode {
 	private String nombre;

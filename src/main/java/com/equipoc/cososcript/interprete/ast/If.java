@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Nodo AST para la instrucción si-sino.
+ * Nodo AST para la instruccion si-sino.
  * Ejemplo:
  *   si (contador > 3) {
  *       mostrar("copado");
@@ -28,7 +28,7 @@ public class If implements ASTNode {
 		Object valCond = condicion.execute(symbolTable);
 
 		if (!(valCond instanceof Boolean)) {
-			throw new RuntimeException("Error semántico: La condición del 'si' debe ser booleana");
+			throw new RuntimeException("Error semantico: La condición del 'si' debe ser booleana");
 		}
 
 		if ((Boolean) valCond) {
@@ -42,4 +42,8 @@ public class If implements ASTNode {
 		}
 		return null;
 	}
+
+	public ASTNode getCondicion() { return condicion; }
+	public List<ASTNode> getCuerpoThen() { return cuerpoThen; }
+	public List<ASTNode> getCuerpoElse() { return cuerpoElse; }
 }

@@ -3,27 +3,58 @@ package com.equipoc.cososcript.interprete;
 import com.equipoc.cososcript.interprete.ast.*;
 import com.equipoc.cososcript.interprete.CosoScriptParser.*;
 
+import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.tree.RuleNode;
+import org.antlr.v4.runtime.tree.TerminalNode;
+
 public class CosoScriptCustomVisitor extends CosoScriptBaseVisitor<Object> {
 
-    private SymbolTable symbolTable;
-
-    public CosoScriptCustomVisitor() {
-        this.symbolTable = new SymbolTable();
+    @Override
+    public Object visit(ParseTree tree) {
+        if (tree instanceof TerminalNode) return visitTerminal((TerminalNode) tree);
+        RuleNode r = (RuleNode) tree;
+        if (r instanceof ProgramaContext) return visitPrograma((ProgramaContext) r);
+        if (r instanceof SentenciaContext) return visitSentencia((SentenciaContext) r);
+        if (r instanceof DeclaracionContext) return visitDeclaracion((DeclaracionContext) r);
+        if (r instanceof AsignacionContext) return visitAsignacion((AsignacionContext) r);
+        if (r instanceof MostrarContext) return visitMostrar((MostrarContext) r);
+        if (r instanceof CondicionalContext) return visitCondicional((CondicionalContext) r);
+        if (r instanceof RepetirContext) return visitRepetir((RepetirContext) r);
+        if (r instanceof Logica_oContext) return visitLogica_o((Logica_oContext) r);
+        if (r instanceof Logica_yContext) return visitLogica_y((Logica_yContext) r);
+        if (r instanceof IgualdadContext) return visitIgualdad((IgualdadContext) r);
+        if (r instanceof ComparacionContext) return visitComparacion((ComparacionContext) r);
+        if (r instanceof AditivaContext) return visitAditiva((AditivaContext) r);
+        if (r instanceof MultiplicativaContext) return visitMultiplicativa((MultiplicativaContext) r);
+        if (r instanceof UnariaContext) return visitUnaria((UnariaContext) r);
+        if (r instanceof PrimariaContext) return visitPrimaria((PrimariaContext) r);
+        if (r instanceof NumeroContext) return visitNumero((NumeroContext) r);
+        if (r instanceof CadenaContext) return visitCadena((CadenaContext) r);
+        if (r instanceof BooleanoContext) return visitBooleano((BooleanoContext) r);
+        return visitChildren(r);
     }
 
-    public SymbolTable getSymbolTable() {
-        return symbolTable;
+    @Override
+    public Object visitChildren(RuleNode node) {
+        Object result = defaultResult();
+        int n = node.getChildCount();
+        for (int i = 0; i < n; i++) {
+            if (!shouldVisitNextChild(node, result)) break;
+            ParseTree c = node.getChild(i);
+            if (c instanceof TerminalNode) continue;
+            Object childResult = visit(c);
+            result = aggregateResult(result, childResult);
+        }
+        return result;
     }
 
     @Override
     public Object visitPrograma(ProgramaContext ctx) {
+        java.util.List<ASTNode> programa = new java.util.ArrayList<>();
         for (SentenciaContext s : ctx.sentencia()) {
-            ASTNode node = (ASTNode) visit(s);
-            if (node != null) {
-                node.execute(symbolTable.getMap());
-            }
+            programa.add((ASTNode) visit(s));
         }
-        return null;
+        return programa;
     }
 
     @Override

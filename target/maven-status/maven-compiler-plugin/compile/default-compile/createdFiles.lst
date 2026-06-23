@@ -18,6 +18,7 @@ com\equipoc\cososcript\interprete\ast\UnOp.class
 com\equipoc\cososcript\interprete\CosoScriptParser$Logica_oContext.class
 com\equipoc\cososcript\interprete\SymbolTable.class
 com\equipoc\cososcript\interprete\CosoScriptParser$AditivaContext.class
+com\equipoc\cososcript\interprete\SemanticAnalyzer.class
 com\equipoc\cososcript\interprete\CosoScriptParser.class
 com\equipoc\cososcript\interprete\ast\Literal.class
 com\equipoc\cososcript\interprete\CosoScriptParser$SentenciaContext.class

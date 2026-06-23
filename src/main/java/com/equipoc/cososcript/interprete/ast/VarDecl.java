@@ -2,6 +2,10 @@ package com.equipoc.cososcript.interprete.ast;
 
 import java.util.Map;
 
+/**
+ * Nodo AST para declaracion de variables.
+ */
+
 public class VarDecl implements ASTNode {
     private String nombre;
     private String tipo;
@@ -42,6 +46,10 @@ public class VarDecl implements ASTNode {
         default: return null;
         }
     }
+
+    public String getNombre() { return nombre; }
+    public String getTipo() { return tipo; }
+    public ASTNode getValor() { return valor; }
 
     private boolean validarTipo(String tipo, Object valor) {
         switch (tipo) {

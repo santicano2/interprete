@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Nodo AST para la instrucción repetir-hasta.
+ * Nodo AST para la instruccion repetir-hasta.
  * Ejemplo:
  *   repetir {
  *       mostrar(contador);
@@ -30,7 +30,7 @@ public class Repeat implements ASTNode {
 			Object valCond = condicion.execute(symbolTable);
 
 			if (!(valCond instanceof Boolean)) {
-				throw new RuntimeException("Error semántico: La condición del 'hasta' debe ser booleana");
+				throw new RuntimeException("Error semantico: La condición del 'hasta' debe ser booleana");
 			}
 
 			if ((Boolean) valCond) {
@@ -40,4 +40,7 @@ public class Repeat implements ASTNode {
 
 		return null;
 	}
+
+	public List<ASTNode> getCuerpo() { return cuerpo; }
+	public ASTNode getCondicion() { return condicion; }
 }

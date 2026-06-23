@@ -10,6 +10,7 @@ D:\UNLa\2026\1er Cuatrimestre\Conceptos y paradigmas de lenguajes de programaci�
 D:\UNLa\2026\1er Cuatrimestre\Conceptos y paradigmas de lenguajes de programaci처n\TP_EQUIPO_C\interprete\src\main\java\com\equipoc\cososcript\interprete\ast\VarRef.java
 D:\UNLa\2026\1er Cuatrimestre\Conceptos y paradigmas de lenguajes de programaci처n\TP_EQUIPO_C\interprete\src\main\java\com\equipoc\cososcript\interprete\CosoScriptCustomVisitor.java
 D:\UNLa\2026\1er Cuatrimestre\Conceptos y paradigmas de lenguajes de programaci처n\TP_EQUIPO_C\interprete\src\main\java\com\equipoc\cososcript\interprete\Main.java
+D:\UNLa\2026\1er Cuatrimestre\Conceptos y paradigmas de lenguajes de programaci처n\TP_EQUIPO_C\interprete\src\main\java\com\equipoc\cososcript\interprete\SemanticAnalyzer.java
 D:\UNLa\2026\1er Cuatrimestre\Conceptos y paradigmas de lenguajes de programaci처n\TP_EQUIPO_C\interprete\src\main\java\com\equipoc\cososcript\interprete\SymbolTable.java
 D:\UNLa\2026\1er Cuatrimestre\Conceptos y paradigmas de lenguajes de programaci처n\TP_EQUIPO_C\interprete\target\generated-sources\antlr4\com\equipoc\cososcript\interprete\CosoScriptBaseListener.java
 D:\UNLa\2026\1er Cuatrimestre\Conceptos y paradigmas de lenguajes de programaci처n\TP_EQUIPO_C\interprete\target\generated-sources\antlr4\com\equipoc\cososcript\interprete\CosoScriptBaseVisitor.java

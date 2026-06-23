@@ -3,7 +3,7 @@ package com.equipoc.cososcript.interprete.ast;
 import java.util.Map;
 
 /**
- * Nodo AST para la instrucción mostrar.
+ * Nodo AST para la instruccion mostrar.
  * Ejemplo: mostrar(contador);
  */
 public class Println implements ASTNode {
@@ -18,5 +18,9 @@ public class Println implements ASTNode {
 		Object resultado = expresion.execute(symbolTable);
 		System.out.println(resultado);
 		return null;
+	}
+
+	public ASTNode getExpresion() {
+		return expresion;
 	}
 }

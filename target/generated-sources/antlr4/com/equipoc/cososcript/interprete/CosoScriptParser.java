@@ -1,4 +1,4 @@
-// Generated from com\equipoc\cososcript\interprete\CosoScript.g4 by ANTLR 4.5.1
+// Generated from CosoScript.g4 by ANTLR 4.4
 package com.equipoc.cososcript.interprete;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class CosoScriptParser extends Parser {
-	static { RuntimeMetaData.checkVersion("4.5.1", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.4", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
@@ -23,6 +23,13 @@ public class CosoScriptParser extends Parser {
 		MAYOR_IGUAL=22, Y=23, O=24, NO=25, ASIGN=26, PUNTO_COMA=27, COLON=28, 
 		PAREN_IZQD=29, PAREN_DER=30, LLAVE_IZQD=31, LLAVE_DER=32, NUMERO=33, CADENA=34, 
 		ID=35, WS=36, COMENTARIO=37;
+	public static final String[] tokenNames = {
+		"<INVALID>", "'coso'", "'mostrar'", "'si'", "'sino'", "'repetir'", "'hasta'", 
+		"'entero'", "'real'", "'cadena'", "'logico'", "'verdadero'", "'falso'", 
+		"'+'", "'-'", "'*'", "'/'", "'=='", "'!='", "'<'", "'<='", "'>'", "'>='", 
+		"'&&'", "'||'", "'!'", "'='", "';'", "':'", "'('", "')'", "'{'", "'}'", 
+		"NUMERO", "CADENA", "ID", "WS", "COMENTARIO"
+	};
 	public static final int
 		RULE_programa = 0, RULE_sentencia = 1, RULE_declaracion = 2, RULE_asignacion = 3, 
 		RULE_mostrar = 4, RULE_condicional = 5, RULE_repetir = 6, RULE_expresion = 7, 
@@ -37,54 +44,11 @@ public class CosoScriptParser extends Parser {
 		"cadena", "booleano", "tipo"
 	};
 
-	private static final String[] _LITERAL_NAMES = {
-		null, "'coso'", "'mostrar'", "'si'", "'sino'", "'repetir'", "'hasta'", 
-		"'entero'", "'real'", "'cadena'", "'logico'", "'verdadero'", "'falso'", 
-		"'+'", "'-'", "'*'", "'/'", "'=='", "'!='", "'<'", "'<='", "'>'", "'>='", 
-		"'&&'", "'||'", "'!'", "'='", "';'", "':'", "'('", "')'", "'{'", "'}'"
-	};
-	private static final String[] _SYMBOLIC_NAMES = {
-		null, "COSO", "MOSTRAR", "SI", "SINO", "REPETIR", "HASTA", "ENTERO", "REAL", 
-		"CADENA_TIPO", "LOGICO_TIPO", "VERDADERO", "FALSO", "MAS", "MENOS", "MULT", 
-		"DIV", "IGUAL", "NO_IGUAL", "MENOR", "MENOR_IGUAL", "MAYOR", "MAYOR_IGUAL", 
-		"Y", "O", "NO", "ASIGN", "PUNTO_COMA", "COLON", "PAREN_IZQD", "PAREN_DER", 
-		"LLAVE_IZQD", "LLAVE_DER", "NUMERO", "CADENA", "ID", "WS", "COMENTARIO"
-	};
-	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
-
-	/**
-	 * @deprecated Use {@link #VOCABULARY} instead.
-	 */
-	@Deprecated
-	public static final String[] tokenNames;
-	static {
-		tokenNames = new String[_SYMBOLIC_NAMES.length];
-		for (int i = 0; i < tokenNames.length; i++) {
-			tokenNames[i] = VOCABULARY.getLiteralName(i);
-			if (tokenNames[i] == null) {
-				tokenNames[i] = VOCABULARY.getSymbolicName(i);
-			}
-
-			if (tokenNames[i] == null) {
-				tokenNames[i] = "<INVALID>";
-			}
-		}
-	}
-
-	@Override
-	@Deprecated
-	public String[] getTokenNames() {
-		return tokenNames;
-	}
-
-	@Override
-
-	public Vocabulary getVocabulary() {
-		return VOCABULARY;
-	}
-
 	@Override
 	public String getGrammarFileName() { return "CosoScript.g4"; }
+
+	@Override
+	public String[] getTokenNames() { return tokenNames; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }
@@ -100,10 +64,10 @@ public class CosoScriptParser extends Parser {
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 	public static class ProgramaContext extends ParserRuleContext {
-		public TerminalNode EOF() { return getToken(CosoScriptParser.EOF, 0); }
 		public List<SentenciaContext> sentencia() {
 			return getRuleContexts(SentenciaContext.class);
 		}
+		public TerminalNode EOF() { return getToken(CosoScriptParser.EOF, 0); }
 		public SentenciaContext sentencia(int i) {
 			return getRuleContext(SentenciaContext.class,i);
 		}
@@ -118,11 +82,6 @@ public class CosoScriptParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CosoScriptListener ) ((CosoScriptListener)listener).exitPrograma(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CosoScriptVisitor ) return ((CosoScriptVisitor<? extends T>)visitor).visitPrograma(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -139,16 +98,14 @@ public class CosoScriptParser extends Parser {
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << COSO) | (1L << MOSTRAR) | (1L << SI) | (1L << REPETIR) | (1L << ID))) != 0)) {
 				{
 				{
-				setState(42);
-				sentencia();
+				setState(42); sentencia();
 				}
 				}
 				setState(47);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(48);
-			match(EOF);
+			setState(48); match(EOF);
 			}
 		}
 		catch (RecognitionException re) {
@@ -166,17 +123,17 @@ public class CosoScriptParser extends Parser {
 		public DeclaracionContext declaracion() {
 			return getRuleContext(DeclaracionContext.class,0);
 		}
+		public RepetirContext repetir() {
+			return getRuleContext(RepetirContext.class,0);
+		}
+		public CondicionalContext condicional() {
+			return getRuleContext(CondicionalContext.class,0);
+		}
 		public AsignacionContext asignacion() {
 			return getRuleContext(AsignacionContext.class,0);
 		}
 		public MostrarContext mostrar() {
 			return getRuleContext(MostrarContext.class,0);
-		}
-		public CondicionalContext condicional() {
-			return getRuleContext(CondicionalContext.class,0);
-		}
-		public RepetirContext repetir() {
-			return getRuleContext(RepetirContext.class,0);
 		}
 		public SentenciaContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -190,11 +147,6 @@ public class CosoScriptParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CosoScriptListener ) ((CosoScriptListener)listener).exitSentencia(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CosoScriptVisitor ) return ((CosoScriptVisitor<? extends T>)visitor).visitSentencia(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final SentenciaContext sentencia() throws RecognitionException {
@@ -206,36 +158,31 @@ public class CosoScriptParser extends Parser {
 			case COSO:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(50);
-				declaracion();
+				setState(50); declaracion();
 				}
 				break;
 			case ID:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(51);
-				asignacion();
+				setState(51); asignacion();
 				}
 				break;
 			case MOSTRAR:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(52);
-				mostrar();
+				setState(52); mostrar();
 				}
 				break;
 			case SI:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(53);
-				condicional();
+				setState(53); condicional();
 				}
 				break;
 			case REPETIR:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(54);
-				repetir();
+				setState(54); repetir();
 				}
 				break;
 			default:
@@ -254,17 +201,17 @@ public class CosoScriptParser extends Parser {
 	}
 
 	public static class DeclaracionContext extends ParserRuleContext {
-		public TerminalNode COSO() { return getToken(CosoScriptParser.COSO, 0); }
 		public TerminalNode ID() { return getToken(CosoScriptParser.ID, 0); }
-		public TerminalNode COLON() { return getToken(CosoScriptParser.COLON, 0); }
-		public TipoContext tipo() {
-			return getRuleContext(TipoContext.class,0);
-		}
-		public TerminalNode PUNTO_COMA() { return getToken(CosoScriptParser.PUNTO_COMA, 0); }
-		public TerminalNode ASIGN() { return getToken(CosoScriptParser.ASIGN, 0); }
 		public ExpresionContext expresion() {
 			return getRuleContext(ExpresionContext.class,0);
 		}
+		public TipoContext tipo() {
+			return getRuleContext(TipoContext.class,0);
+		}
+		public TerminalNode COLON() { return getToken(CosoScriptParser.COLON, 0); }
+		public TerminalNode PUNTO_COMA() { return getToken(CosoScriptParser.PUNTO_COMA, 0); }
+		public TerminalNode ASIGN() { return getToken(CosoScriptParser.ASIGN, 0); }
+		public TerminalNode COSO() { return getToken(CosoScriptParser.COSO, 0); }
 		public DeclaracionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -277,11 +224,6 @@ public class CosoScriptParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CosoScriptListener ) ((CosoScriptListener)listener).exitDeclaracion(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CosoScriptVisitor ) return ((CosoScriptVisitor<? extends T>)visitor).visitDeclaracion(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final DeclaracionContext declaracion() throws RecognitionException {
@@ -291,27 +233,20 @@ public class CosoScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(57);
-			match(COSO);
-			setState(58);
-			match(ID);
-			setState(59);
-			match(COLON);
-			setState(60);
-			tipo();
+			setState(57); match(COSO);
+			setState(58); match(ID);
+			setState(59); match(COLON);
+			setState(60); tipo();
 			setState(63);
 			_la = _input.LA(1);
 			if (_la==ASIGN) {
 				{
-				setState(61);
-				match(ASIGN);
-				setState(62);
-				expresion();
+				setState(61); match(ASIGN);
+				setState(62); expresion();
 				}
 			}
 
-			setState(65);
-			match(PUNTO_COMA);
+			setState(65); match(PUNTO_COMA);
 			}
 		}
 		catch (RecognitionException re) {
@@ -327,10 +262,10 @@ public class CosoScriptParser extends Parser {
 
 	public static class AsignacionContext extends ParserRuleContext {
 		public TerminalNode ID() { return getToken(CosoScriptParser.ID, 0); }
-		public TerminalNode ASIGN() { return getToken(CosoScriptParser.ASIGN, 0); }
 		public ExpresionContext expresion() {
 			return getRuleContext(ExpresionContext.class,0);
 		}
+		public TerminalNode ASIGN() { return getToken(CosoScriptParser.ASIGN, 0); }
 		public TerminalNode PUNTO_COMA() { return getToken(CosoScriptParser.PUNTO_COMA, 0); }
 		public AsignacionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -344,11 +279,6 @@ public class CosoScriptParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CosoScriptListener ) ((CosoScriptListener)listener).exitAsignacion(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CosoScriptVisitor ) return ((CosoScriptVisitor<? extends T>)visitor).visitAsignacion(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final AsignacionContext asignacion() throws RecognitionException {
@@ -357,14 +287,10 @@ public class CosoScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(67);
-			match(ID);
-			setState(68);
-			match(ASIGN);
-			setState(69);
-			expresion();
-			setState(70);
-			match(PUNTO_COMA);
+			setState(67); match(ID);
+			setState(68); match(ASIGN);
+			setState(69); expresion();
+			setState(70); match(PUNTO_COMA);
 			}
 		}
 		catch (RecognitionException re) {
@@ -379,13 +305,13 @@ public class CosoScriptParser extends Parser {
 	}
 
 	public static class MostrarContext extends ParserRuleContext {
-		public TerminalNode MOSTRAR() { return getToken(CosoScriptParser.MOSTRAR, 0); }
-		public TerminalNode PAREN_IZQD() { return getToken(CosoScriptParser.PAREN_IZQD, 0); }
 		public ExpresionContext expresion() {
 			return getRuleContext(ExpresionContext.class,0);
 		}
-		public TerminalNode PAREN_DER() { return getToken(CosoScriptParser.PAREN_DER, 0); }
+		public TerminalNode PAREN_IZQD() { return getToken(CosoScriptParser.PAREN_IZQD, 0); }
+		public TerminalNode MOSTRAR() { return getToken(CosoScriptParser.MOSTRAR, 0); }
 		public TerminalNode PUNTO_COMA() { return getToken(CosoScriptParser.PUNTO_COMA, 0); }
+		public TerminalNode PAREN_DER() { return getToken(CosoScriptParser.PAREN_DER, 0); }
 		public MostrarContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -398,11 +324,6 @@ public class CosoScriptParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CosoScriptListener ) ((CosoScriptListener)listener).exitMostrar(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CosoScriptVisitor ) return ((CosoScriptVisitor<? extends T>)visitor).visitMostrar(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final MostrarContext mostrar() throws RecognitionException {
@@ -411,16 +332,11 @@ public class CosoScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(72);
-			match(MOSTRAR);
-			setState(73);
-			match(PAREN_IZQD);
-			setState(74);
-			expresion();
-			setState(75);
-			match(PAREN_DER);
-			setState(76);
-			match(PUNTO_COMA);
+			setState(72); match(MOSTRAR);
+			setState(73); match(PAREN_IZQD);
+			setState(74); expresion();
+			setState(75); match(PAREN_DER);
+			setState(76); match(PUNTO_COMA);
 			}
 		}
 		catch (RecognitionException re) {
@@ -438,26 +354,26 @@ public class CosoScriptParser extends Parser {
 		public SentenciaContext sentencia;
 		public List<SentenciaContext> entonces = new ArrayList<SentenciaContext>();
 		public List<SentenciaContext> sino = new ArrayList<SentenciaContext>();
-		public TerminalNode SI() { return getToken(CosoScriptParser.SI, 0); }
-		public TerminalNode PAREN_IZQD() { return getToken(CosoScriptParser.PAREN_IZQD, 0); }
-		public ExpresionContext expresion() {
-			return getRuleContext(ExpresionContext.class,0);
-		}
-		public TerminalNode PAREN_DER() { return getToken(CosoScriptParser.PAREN_DER, 0); }
-		public List<TerminalNode> LLAVE_IZQD() { return getTokens(CosoScriptParser.LLAVE_IZQD); }
-		public TerminalNode LLAVE_IZQD(int i) {
-			return getToken(CosoScriptParser.LLAVE_IZQD, i);
-		}
-		public List<TerminalNode> LLAVE_DER() { return getTokens(CosoScriptParser.LLAVE_DER); }
-		public TerminalNode LLAVE_DER(int i) {
-			return getToken(CosoScriptParser.LLAVE_DER, i);
-		}
-		public TerminalNode SINO() { return getToken(CosoScriptParser.SINO, 0); }
 		public List<SentenciaContext> sentencia() {
 			return getRuleContexts(SentenciaContext.class);
 		}
+		public ExpresionContext expresion() {
+			return getRuleContext(ExpresionContext.class,0);
+		}
+		public TerminalNode PAREN_IZQD() { return getToken(CosoScriptParser.PAREN_IZQD, 0); }
+		public TerminalNode LLAVE_IZQD(int i) {
+			return getToken(CosoScriptParser.LLAVE_IZQD, i);
+		}
+		public List<TerminalNode> LLAVE_IZQD() { return getTokens(CosoScriptParser.LLAVE_IZQD); }
 		public SentenciaContext sentencia(int i) {
 			return getRuleContext(SentenciaContext.class,i);
+		}
+		public TerminalNode SI() { return getToken(CosoScriptParser.SI, 0); }
+		public TerminalNode PAREN_DER() { return getToken(CosoScriptParser.PAREN_DER, 0); }
+		public TerminalNode SINO() { return getToken(CosoScriptParser.SINO, 0); }
+		public List<TerminalNode> LLAVE_DER() { return getTokens(CosoScriptParser.LLAVE_DER); }
+		public TerminalNode LLAVE_DER(int i) {
+			return getToken(CosoScriptParser.LLAVE_DER, i);
 		}
 		public CondicionalContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -471,11 +387,6 @@ public class CosoScriptParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CosoScriptListener ) ((CosoScriptListener)listener).exitCondicional(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CosoScriptVisitor ) return ((CosoScriptVisitor<? extends T>)visitor).visitCondicional(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final CondicionalContext condicional() throws RecognitionException {
@@ -485,24 +396,18 @@ public class CosoScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(78);
-			match(SI);
-			setState(79);
-			match(PAREN_IZQD);
-			setState(80);
-			expresion();
-			setState(81);
-			match(PAREN_DER);
-			setState(82);
-			match(LLAVE_IZQD);
+			setState(78); match(SI);
+			setState(79); match(PAREN_IZQD);
+			setState(80); expresion();
+			setState(81); match(PAREN_DER);
+			setState(82); match(LLAVE_IZQD);
 			setState(86);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << COSO) | (1L << MOSTRAR) | (1L << SI) | (1L << REPETIR) | (1L << ID))) != 0)) {
 				{
 				{
-				setState(83);
-				((CondicionalContext)_localctx).sentencia = sentencia();
+				setState(83); ((CondicionalContext)_localctx).sentencia = sentencia();
 				((CondicionalContext)_localctx).entonces.add(((CondicionalContext)_localctx).sentencia);
 				}
 				}
@@ -510,24 +415,20 @@ public class CosoScriptParser extends Parser {
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(89);
-			match(LLAVE_DER);
+			setState(89); match(LLAVE_DER);
 			setState(99);
 			_la = _input.LA(1);
 			if (_la==SINO) {
 				{
-				setState(90);
-				match(SINO);
-				setState(91);
-				match(LLAVE_IZQD);
+				setState(90); match(SINO);
+				setState(91); match(LLAVE_IZQD);
 				setState(95);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << COSO) | (1L << MOSTRAR) | (1L << SI) | (1L << REPETIR) | (1L << ID))) != 0)) {
 					{
 					{
-					setState(92);
-					((CondicionalContext)_localctx).sentencia = sentencia();
+					setState(92); ((CondicionalContext)_localctx).sentencia = sentencia();
 					((CondicionalContext)_localctx).sino.add(((CondicionalContext)_localctx).sentencia);
 					}
 					}
@@ -535,8 +436,7 @@ public class CosoScriptParser extends Parser {
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
-				setState(98);
-				match(LLAVE_DER);
+				setState(98); match(LLAVE_DER);
 				}
 			}
 
@@ -554,22 +454,22 @@ public class CosoScriptParser extends Parser {
 	}
 
 	public static class RepetirContext extends ParserRuleContext {
-		public TerminalNode REPETIR() { return getToken(CosoScriptParser.REPETIR, 0); }
-		public TerminalNode LLAVE_IZQD() { return getToken(CosoScriptParser.LLAVE_IZQD, 0); }
-		public TerminalNode LLAVE_DER() { return getToken(CosoScriptParser.LLAVE_DER, 0); }
-		public TerminalNode HASTA() { return getToken(CosoScriptParser.HASTA, 0); }
-		public TerminalNode PAREN_IZQD() { return getToken(CosoScriptParser.PAREN_IZQD, 0); }
-		public ExpresionContext expresion() {
-			return getRuleContext(ExpresionContext.class,0);
-		}
-		public TerminalNode PAREN_DER() { return getToken(CosoScriptParser.PAREN_DER, 0); }
-		public TerminalNode PUNTO_COMA() { return getToken(CosoScriptParser.PUNTO_COMA, 0); }
 		public List<SentenciaContext> sentencia() {
 			return getRuleContexts(SentenciaContext.class);
 		}
+		public ExpresionContext expresion() {
+			return getRuleContext(ExpresionContext.class,0);
+		}
+		public TerminalNode PAREN_IZQD() { return getToken(CosoScriptParser.PAREN_IZQD, 0); }
+		public TerminalNode LLAVE_IZQD() { return getToken(CosoScriptParser.LLAVE_IZQD, 0); }
 		public SentenciaContext sentencia(int i) {
 			return getRuleContext(SentenciaContext.class,i);
 		}
+		public TerminalNode REPETIR() { return getToken(CosoScriptParser.REPETIR, 0); }
+		public TerminalNode HASTA() { return getToken(CosoScriptParser.HASTA, 0); }
+		public TerminalNode PUNTO_COMA() { return getToken(CosoScriptParser.PUNTO_COMA, 0); }
+		public TerminalNode PAREN_DER() { return getToken(CosoScriptParser.PAREN_DER, 0); }
+		public TerminalNode LLAVE_DER() { return getToken(CosoScriptParser.LLAVE_DER, 0); }
 		public RepetirContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -582,11 +482,6 @@ public class CosoScriptParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CosoScriptListener ) ((CosoScriptListener)listener).exitRepetir(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CosoScriptVisitor ) return ((CosoScriptVisitor<? extends T>)visitor).visitRepetir(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final RepetirContext repetir() throws RecognitionException {
@@ -596,36 +491,27 @@ public class CosoScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(101);
-			match(REPETIR);
-			setState(102);
-			match(LLAVE_IZQD);
+			setState(101); match(REPETIR);
+			setState(102); match(LLAVE_IZQD);
 			setState(106);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << COSO) | (1L << MOSTRAR) | (1L << SI) | (1L << REPETIR) | (1L << ID))) != 0)) {
 				{
 				{
-				setState(103);
-				sentencia();
+				setState(103); sentencia();
 				}
 				}
 				setState(108);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(109);
-			match(LLAVE_DER);
-			setState(110);
-			match(HASTA);
-			setState(111);
-			match(PAREN_IZQD);
-			setState(112);
-			expresion();
-			setState(113);
-			match(PAREN_DER);
-			setState(114);
-			match(PUNTO_COMA);
+			setState(109); match(LLAVE_DER);
+			setState(110); match(HASTA);
+			setState(111); match(PAREN_IZQD);
+			setState(112); expresion();
+			setState(113); match(PAREN_DER);
+			setState(114); match(PUNTO_COMA);
 			}
 		}
 		catch (RecognitionException re) {
@@ -655,11 +541,6 @@ public class CosoScriptParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CosoScriptListener ) ((CosoScriptListener)listener).exitExpresion(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CosoScriptVisitor ) return ((CosoScriptVisitor<? extends T>)visitor).visitExpresion(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final ExpresionContext expresion() throws RecognitionException {
@@ -668,8 +549,7 @@ public class CosoScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(116);
-			logica_o();
+			setState(116); logica_o();
 			}
 		}
 		catch (RecognitionException re) {
@@ -684,15 +564,15 @@ public class CosoScriptParser extends Parser {
 	}
 
 	public static class Logica_oContext extends ParserRuleContext {
-		public List<Logica_yContext> logica_y() {
-			return getRuleContexts(Logica_yContext.class);
+		public TerminalNode O(int i) {
+			return getToken(CosoScriptParser.O, i);
 		}
+		public List<TerminalNode> O() { return getTokens(CosoScriptParser.O); }
 		public Logica_yContext logica_y(int i) {
 			return getRuleContext(Logica_yContext.class,i);
 		}
-		public List<TerminalNode> O() { return getTokens(CosoScriptParser.O); }
-		public TerminalNode O(int i) {
-			return getToken(CosoScriptParser.O, i);
+		public List<Logica_yContext> logica_y() {
+			return getRuleContexts(Logica_yContext.class);
 		}
 		public Logica_oContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -706,11 +586,6 @@ public class CosoScriptParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CosoScriptListener ) ((CosoScriptListener)listener).exitLogica_o(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CosoScriptVisitor ) return ((CosoScriptVisitor<? extends T>)visitor).visitLogica_o(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final Logica_oContext logica_o() throws RecognitionException {
@@ -720,18 +595,15 @@ public class CosoScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(118);
-			logica_y();
+			setState(118); logica_y();
 			setState(123);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==O) {
 				{
 				{
-				setState(119);
-				match(O);
-				setState(120);
-				logica_y();
+				setState(119); match(O);
+				setState(120); logica_y();
 				}
 				}
 				setState(125);
@@ -752,15 +624,15 @@ public class CosoScriptParser extends Parser {
 	}
 
 	public static class Logica_yContext extends ParserRuleContext {
-		public List<IgualdadContext> igualdad() {
-			return getRuleContexts(IgualdadContext.class);
-		}
+		public List<TerminalNode> Y() { return getTokens(CosoScriptParser.Y); }
 		public IgualdadContext igualdad(int i) {
 			return getRuleContext(IgualdadContext.class,i);
 		}
-		public List<TerminalNode> Y() { return getTokens(CosoScriptParser.Y); }
 		public TerminalNode Y(int i) {
 			return getToken(CosoScriptParser.Y, i);
+		}
+		public List<IgualdadContext> igualdad() {
+			return getRuleContexts(IgualdadContext.class);
 		}
 		public Logica_yContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -774,11 +646,6 @@ public class CosoScriptParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CosoScriptListener ) ((CosoScriptListener)listener).exitLogica_y(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CosoScriptVisitor ) return ((CosoScriptVisitor<? extends T>)visitor).visitLogica_y(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final Logica_yContext logica_y() throws RecognitionException {
@@ -788,18 +655,15 @@ public class CosoScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(126);
-			igualdad();
+			setState(126); igualdad();
 			setState(131);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==Y) {
 				{
 				{
-				setState(127);
-				match(Y);
-				setState(128);
-				igualdad();
+				setState(127); match(Y);
+				setState(128); igualdad();
 				}
 				}
 				setState(133);
@@ -820,17 +684,17 @@ public class CosoScriptParser extends Parser {
 	}
 
 	public static class IgualdadContext extends ParserRuleContext {
-		public List<ComparacionContext> comparacion() {
-			return getRuleContexts(ComparacionContext.class);
-		}
 		public ComparacionContext comparacion(int i) {
 			return getRuleContext(ComparacionContext.class,i);
 		}
-		public List<TerminalNode> IGUAL() { return getTokens(CosoScriptParser.IGUAL); }
+		public List<ComparacionContext> comparacion() {
+			return getRuleContexts(ComparacionContext.class);
+		}
+		public List<TerminalNode> NO_IGUAL() { return getTokens(CosoScriptParser.NO_IGUAL); }
 		public TerminalNode IGUAL(int i) {
 			return getToken(CosoScriptParser.IGUAL, i);
 		}
-		public List<TerminalNode> NO_IGUAL() { return getTokens(CosoScriptParser.NO_IGUAL); }
+		public List<TerminalNode> IGUAL() { return getTokens(CosoScriptParser.IGUAL); }
 		public TerminalNode NO_IGUAL(int i) {
 			return getToken(CosoScriptParser.NO_IGUAL, i);
 		}
@@ -846,11 +710,6 @@ public class CosoScriptParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CosoScriptListener ) ((CosoScriptListener)listener).exitIgualdad(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CosoScriptVisitor ) return ((CosoScriptVisitor<? extends T>)visitor).visitIgualdad(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final IgualdadContext igualdad() throws RecognitionException {
@@ -860,8 +719,7 @@ public class CosoScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(134);
-			comparacion();
+			setState(134); comparacion();
 			setState(139);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
@@ -872,11 +730,9 @@ public class CosoScriptParser extends Parser {
 				_la = _input.LA(1);
 				if ( !(_la==IGUAL || _la==NO_IGUAL) ) {
 				_errHandler.recoverInline(this);
-				} else {
-					consume();
 				}
-				setState(136);
-				comparacion();
+				consume();
+				setState(136); comparacion();
 				}
 				}
 				setState(141);
@@ -897,27 +753,27 @@ public class CosoScriptParser extends Parser {
 	}
 
 	public static class ComparacionContext extends ParserRuleContext {
-		public List<AditivaContext> aditiva() {
-			return getRuleContexts(AditivaContext.class);
-		}
 		public AditivaContext aditiva(int i) {
 			return getRuleContext(AditivaContext.class,i);
 		}
-		public List<TerminalNode> MENOR() { return getTokens(CosoScriptParser.MENOR); }
 		public TerminalNode MENOR(int i) {
 			return getToken(CosoScriptParser.MENOR, i);
 		}
-		public List<TerminalNode> MENOR_IGUAL() { return getTokens(CosoScriptParser.MENOR_IGUAL); }
-		public TerminalNode MENOR_IGUAL(int i) {
-			return getToken(CosoScriptParser.MENOR_IGUAL, i);
-		}
 		public List<TerminalNode> MAYOR() { return getTokens(CosoScriptParser.MAYOR); }
+		public List<TerminalNode> MAYOR_IGUAL() { return getTokens(CosoScriptParser.MAYOR_IGUAL); }
+		public List<TerminalNode> MENOR_IGUAL() { return getTokens(CosoScriptParser.MENOR_IGUAL); }
+		public List<TerminalNode> MENOR() { return getTokens(CosoScriptParser.MENOR); }
 		public TerminalNode MAYOR(int i) {
 			return getToken(CosoScriptParser.MAYOR, i);
 		}
-		public List<TerminalNode> MAYOR_IGUAL() { return getTokens(CosoScriptParser.MAYOR_IGUAL); }
 		public TerminalNode MAYOR_IGUAL(int i) {
 			return getToken(CosoScriptParser.MAYOR_IGUAL, i);
+		}
+		public List<AditivaContext> aditiva() {
+			return getRuleContexts(AditivaContext.class);
+		}
+		public TerminalNode MENOR_IGUAL(int i) {
+			return getToken(CosoScriptParser.MENOR_IGUAL, i);
 		}
 		public ComparacionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -931,11 +787,6 @@ public class CosoScriptParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CosoScriptListener ) ((CosoScriptListener)listener).exitComparacion(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CosoScriptVisitor ) return ((CosoScriptVisitor<? extends T>)visitor).visitComparacion(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final ComparacionContext comparacion() throws RecognitionException {
@@ -945,8 +796,7 @@ public class CosoScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(142);
-			aditiva();
+			setState(142); aditiva();
 			setState(147);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
@@ -957,11 +807,9 @@ public class CosoScriptParser extends Parser {
 				_la = _input.LA(1);
 				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << MENOR) | (1L << MENOR_IGUAL) | (1L << MAYOR) | (1L << MAYOR_IGUAL))) != 0)) ) {
 				_errHandler.recoverInline(this);
-				} else {
-					consume();
 				}
-				setState(144);
-				aditiva();
+				consume();
+				setState(144); aditiva();
 				}
 				}
 				setState(149);
@@ -982,19 +830,19 @@ public class CosoScriptParser extends Parser {
 	}
 
 	public static class AditivaContext extends ParserRuleContext {
+		public List<TerminalNode> MENOS() { return getTokens(CosoScriptParser.MENOS); }
+		public List<TerminalNode> MAS() { return getTokens(CosoScriptParser.MAS); }
+		public TerminalNode MENOS(int i) {
+			return getToken(CosoScriptParser.MENOS, i);
+		}
+		public TerminalNode MAS(int i) {
+			return getToken(CosoScriptParser.MAS, i);
+		}
 		public List<MultiplicativaContext> multiplicativa() {
 			return getRuleContexts(MultiplicativaContext.class);
 		}
 		public MultiplicativaContext multiplicativa(int i) {
 			return getRuleContext(MultiplicativaContext.class,i);
-		}
-		public List<TerminalNode> MAS() { return getTokens(CosoScriptParser.MAS); }
-		public TerminalNode MAS(int i) {
-			return getToken(CosoScriptParser.MAS, i);
-		}
-		public List<TerminalNode> MENOS() { return getTokens(CosoScriptParser.MENOS); }
-		public TerminalNode MENOS(int i) {
-			return getToken(CosoScriptParser.MENOS, i);
 		}
 		public AditivaContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -1008,11 +856,6 @@ public class CosoScriptParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CosoScriptListener ) ((CosoScriptListener)listener).exitAditiva(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CosoScriptVisitor ) return ((CosoScriptVisitor<? extends T>)visitor).visitAditiva(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final AditivaContext aditiva() throws RecognitionException {
@@ -1022,8 +865,7 @@ public class CosoScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(150);
-			multiplicativa();
+			setState(150); multiplicativa();
 			setState(155);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
@@ -1034,11 +876,9 @@ public class CosoScriptParser extends Parser {
 				_la = _input.LA(1);
 				if ( !(_la==MAS || _la==MENOS) ) {
 				_errHandler.recoverInline(this);
-				} else {
-					consume();
 				}
-				setState(152);
-				multiplicativa();
+				consume();
+				setState(152); multiplicativa();
 				}
 				}
 				setState(157);
@@ -1059,19 +899,19 @@ public class CosoScriptParser extends Parser {
 	}
 
 	public static class MultiplicativaContext extends ParserRuleContext {
-		public List<UnariaContext> unaria() {
-			return getRuleContexts(UnariaContext.class);
-		}
-		public UnariaContext unaria(int i) {
-			return getRuleContext(UnariaContext.class,i);
-		}
-		public List<TerminalNode> MULT() { return getTokens(CosoScriptParser.MULT); }
 		public TerminalNode MULT(int i) {
 			return getToken(CosoScriptParser.MULT, i);
 		}
+		public List<UnariaContext> unaria() {
+			return getRuleContexts(UnariaContext.class);
+		}
+		public List<TerminalNode> MULT() { return getTokens(CosoScriptParser.MULT); }
 		public List<TerminalNode> DIV() { return getTokens(CosoScriptParser.DIV); }
 		public TerminalNode DIV(int i) {
 			return getToken(CosoScriptParser.DIV, i);
+		}
+		public UnariaContext unaria(int i) {
+			return getRuleContext(UnariaContext.class,i);
 		}
 		public MultiplicativaContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -1085,11 +925,6 @@ public class CosoScriptParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CosoScriptListener ) ((CosoScriptListener)listener).exitMultiplicativa(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CosoScriptVisitor ) return ((CosoScriptVisitor<? extends T>)visitor).visitMultiplicativa(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final MultiplicativaContext multiplicativa() throws RecognitionException {
@@ -1099,8 +934,7 @@ public class CosoScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(158);
-			unaria();
+			setState(158); unaria();
 			setState(163);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
@@ -1111,11 +945,9 @@ public class CosoScriptParser extends Parser {
 				_la = _input.LA(1);
 				if ( !(_la==MULT || _la==DIV) ) {
 				_errHandler.recoverInline(this);
-				} else {
-					consume();
 				}
-				setState(160);
-				unaria();
+				consume();
+				setState(160); unaria();
 				}
 				}
 				setState(165);
@@ -1136,11 +968,11 @@ public class CosoScriptParser extends Parser {
 	}
 
 	public static class UnariaContext extends ParserRuleContext {
+		public TerminalNode MENOS() { return getToken(CosoScriptParser.MENOS, 0); }
+		public TerminalNode NO() { return getToken(CosoScriptParser.NO, 0); }
 		public PostfijaContext postfija() {
 			return getRuleContext(PostfijaContext.class,0);
 		}
-		public TerminalNode NO() { return getToken(CosoScriptParser.NO, 0); }
-		public TerminalNode MENOS() { return getToken(CosoScriptParser.MENOS, 0); }
 		public UnariaContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1152,11 +984,6 @@ public class CosoScriptParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CosoScriptListener ) ((CosoScriptListener)listener).exitUnaria(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CosoScriptVisitor ) return ((CosoScriptVisitor<? extends T>)visitor).visitUnaria(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1175,14 +1002,12 @@ public class CosoScriptParser extends Parser {
 				_la = _input.LA(1);
 				if ( !(_la==MENOS || _la==NO) ) {
 				_errHandler.recoverInline(this);
-				} else {
-					consume();
 				}
+				consume();
 				}
 			}
 
-			setState(169);
-			postfija();
+			setState(169); postfija();
 			}
 		}
 		catch (RecognitionException re) {
@@ -1212,11 +1037,6 @@ public class CosoScriptParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CosoScriptListener ) ((CosoScriptListener)listener).exitPostfija(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CosoScriptVisitor ) return ((CosoScriptVisitor<? extends T>)visitor).visitPostfija(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final PostfijaContext postfija() throws RecognitionException {
@@ -1225,8 +1045,7 @@ public class CosoScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(171);
-			primaria();
+			setState(171); primaria();
 			}
 		}
 		catch (RecognitionException re) {
@@ -1241,21 +1060,21 @@ public class CosoScriptParser extends Parser {
 	}
 
 	public static class PrimariaContext extends ParserRuleContext {
-		public NumeroContext numero() {
-			return getRuleContext(NumeroContext.class,0);
-		}
-		public CadenaContext cadena() {
-			return getRuleContext(CadenaContext.class,0);
-		}
 		public TerminalNode ID() { return getToken(CosoScriptParser.ID, 0); }
-		public BooleanoContext booleano() {
-			return getRuleContext(BooleanoContext.class,0);
-		}
-		public TerminalNode PAREN_IZQD() { return getToken(CosoScriptParser.PAREN_IZQD, 0); }
 		public ExpresionContext expresion() {
 			return getRuleContext(ExpresionContext.class,0);
 		}
+		public TerminalNode PAREN_IZQD() { return getToken(CosoScriptParser.PAREN_IZQD, 0); }
+		public NumeroContext numero() {
+			return getRuleContext(NumeroContext.class,0);
+		}
+		public BooleanoContext booleano() {
+			return getRuleContext(BooleanoContext.class,0);
+		}
 		public TerminalNode PAREN_DER() { return getToken(CosoScriptParser.PAREN_DER, 0); }
+		public CadenaContext cadena() {
+			return getRuleContext(CadenaContext.class,0);
+		}
 		public PrimariaContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1268,11 +1087,6 @@ public class CosoScriptParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CosoScriptListener ) ((CosoScriptListener)listener).exitPrimaria(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CosoScriptVisitor ) return ((CosoScriptVisitor<? extends T>)visitor).visitPrimaria(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final PrimariaContext primaria() throws RecognitionException {
@@ -1284,41 +1098,34 @@ public class CosoScriptParser extends Parser {
 			case NUMERO:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(173);
-				numero();
+				setState(173); numero();
 				}
 				break;
 			case CADENA:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(174);
-				cadena();
+				setState(174); cadena();
 				}
 				break;
 			case ID:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(175);
-				match(ID);
+				setState(175); match(ID);
 				}
 				break;
 			case VERDADERO:
 			case FALSO:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(176);
-				booleano();
+				setState(176); booleano();
 				}
 				break;
 			case PAREN_IZQD:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(177);
-				match(PAREN_IZQD);
-				setState(178);
-				expresion();
-				setState(179);
-				match(PAREN_DER);
+				setState(177); match(PAREN_IZQD);
+				setState(178); expresion();
+				setState(179); match(PAREN_DER);
 				}
 				break;
 			default:
@@ -1350,11 +1157,6 @@ public class CosoScriptParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CosoScriptListener ) ((CosoScriptListener)listener).exitNumero(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CosoScriptVisitor ) return ((CosoScriptVisitor<? extends T>)visitor).visitNumero(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final NumeroContext numero() throws RecognitionException {
@@ -1363,8 +1165,7 @@ public class CosoScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(183);
-			match(NUMERO);
+			setState(183); match(NUMERO);
 			}
 		}
 		catch (RecognitionException re) {
@@ -1392,11 +1193,6 @@ public class CosoScriptParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CosoScriptListener ) ((CosoScriptListener)listener).exitCadena(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CosoScriptVisitor ) return ((CosoScriptVisitor<? extends T>)visitor).visitCadena(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final CadenaContext cadena() throws RecognitionException {
@@ -1405,8 +1201,7 @@ public class CosoScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(185);
-			match(CADENA);
+			setState(185); match(CADENA);
 			}
 		}
 		catch (RecognitionException re) {
@@ -1435,11 +1230,6 @@ public class CosoScriptParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CosoScriptListener ) ((CosoScriptListener)listener).exitBooleano(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CosoScriptVisitor ) return ((CosoScriptVisitor<? extends T>)visitor).visitBooleano(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final BooleanoContext booleano() throws RecognitionException {
@@ -1453,9 +1243,8 @@ public class CosoScriptParser extends Parser {
 			_la = _input.LA(1);
 			if ( !(_la==VERDADERO || _la==FALSO) ) {
 			_errHandler.recoverInline(this);
-			} else {
-				consume();
 			}
+			consume();
 			}
 		}
 		catch (RecognitionException re) {
@@ -1470,10 +1259,10 @@ public class CosoScriptParser extends Parser {
 	}
 
 	public static class TipoContext extends ParserRuleContext {
-		public TerminalNode ENTERO() { return getToken(CosoScriptParser.ENTERO, 0); }
 		public TerminalNode REAL() { return getToken(CosoScriptParser.REAL, 0); }
 		public TerminalNode CADENA_TIPO() { return getToken(CosoScriptParser.CADENA_TIPO, 0); }
 		public TerminalNode LOGICO_TIPO() { return getToken(CosoScriptParser.LOGICO_TIPO, 0); }
+		public TerminalNode ENTERO() { return getToken(CosoScriptParser.ENTERO, 0); }
 		public TipoContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1485,11 +1274,6 @@ public class CosoScriptParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CosoScriptListener ) ((CosoScriptListener)listener).exitTipo(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CosoScriptVisitor ) return ((CosoScriptVisitor<? extends T>)visitor).visitTipo(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1504,9 +1288,8 @@ public class CosoScriptParser extends Parser {
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << ENTERO) | (1L << REAL) | (1L << CADENA_TIPO) | (1L << LOGICO_TIPO))) != 0)) ) {
 			_errHandler.recoverInline(this);
-			} else {
-				consume();
 			}
+			consume();
 			}
 		}
 		catch (RecognitionException re) {

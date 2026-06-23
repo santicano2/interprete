@@ -79,79 +79,55 @@ Salida:
 re copado
 ```
 
+## Compilar y ejecutar desde Eclipse
+
+1. Importar el proyecto como **Existing Maven Project**
+2. Hacer click en Project -> Clean para compilar
+3. Hacer clic derecho sobre `Main.java` → **Run As** → **Java Application**
+4. Ir cambiando el codigo de test.cs por los otros ejemplos en /test
+
+Alternativamente si no funciona asi, hacer esto:
+
+1. Importar el proyecto como **Existing Maven Project**
+1. Hacer clic derecho sobre el proyecto → **Run As** → **Maven build...**
+1. En **Goals** escribir: `antlr4:antlr4 compile`
+1. Hacer clic derecho sobre `Main.java` → **Run As** → **Java Application**
+
+## Decisiones de diseño
+
+- Separamos el Visitor de la ejecución (construcción del AST) del intérprete
+  para tener una fase de análisis semántico previa, en lugar de usar
+  acciones embebidas en la gramática como sugiere el tutorial.
+- Si una variable no se inicializa, se le asigna un valor por defecto
+  según su tipo (0, 0.0, "", false).
+- Detectamos errores semánticos (variable no declarada, redeclarada,
+  división por cero, tipos incompatibles) antes de ejecutar,
+  en una etapa separada del intérprete.
+
 ## Estructura del Proyecto
 
 ```
 interprete/
-├── pom.xml                              # Configuración Maven
+├── pom.xml                              # Configuracion Maven
 ├── test/
 │   └── test.cs                          # Programa de prueba
 └── src/main/
     ├── antlr4/com/equipoc/cososcript/interprete/
-    │   └── CosoScript.g4               # Gramática ANTLR (léxica + sintáctica)
+    │   └── CosoScript.g4               # Gramatica ANTLR (lexica + sintactica)
     └── java/com/equipoc/cososcript/interprete/
-        ├── Main.java                    # Punto de entrada
-        ├── SymbolTable.java            # Tabla de símbolos (gestión de variables)
-        ├── CosoScriptCustomVisitor.java # Visitor: recorre el AST y ejecuta
+         ├── Main.java                    # Punto de entrada
+         ├── SymbolTable.java            # Tabla de símbolos (gestion de variables)
+         ├── SemanticAnalyzer.java       # Análisis semántico previo a ejecucion
+         ├── CosoScriptCustomVisitor.java # Visitor: recorre el arbol y construye el AST
         └── ast/
             ├── ASTNode.java            # Interfaz base del AST
             ├── BinOp.java              # Operaciones binarias (+, -, *, /, ==, etc.)
             ├── If.java                 # Condicional si-sino
             ├── Literal.java            # Valores constantes
-            ├── Println.java            # Instrucción mostrar
+            ├── Println.java            # Instruccion mostrar
             ├── Repeat.java             # Bucle repetir-hasta
             ├── UnOp.java               # Operaciones unarias (!, -)
-            ├── VarAssign.java          # Asignación de variable
-            ├── VarDecl.java            # Declaración de variable
+            ├── VarAssign.java          # Asignacion de variable
+            ├── VarDecl.java            # Declaracion de variable
             └── VarRef.java             # Referencia a variable
 ```
-
-## Compilar y Ejecutar
-
-### Desde terminal (recomendado)
-
-```bash
-cd interprete
-mvn antlr4:antlr4 compile exec:java -D"exec.mainClass=com.equipoc.cososcript.interprete.Main"
-```
-
-> Si ya compilaste antes y solo querés ejecutar de nuevo:
->
-> ```bash
-> mvn exec:java -D"exec.mainClass=com.equipoc.cososcript.interprete.Main"
-> ```
-
-### Para ejecutar un archivo específico
-
-```bash
-mvn antlr4:antlr4 compile exec:java -D"exec.mainClass=com.equipoc.cososcript.interprete.Main" -D"exec.args=ruta/archivo.cs"
-```
-
-### Desde Eclipse
-
-Eclipse no genera automáticamente las clases de ANTLR. Para que funcione:
-
-1. En terminal: `mvn antlr4:antlr4 compile` (genera fuentes ANTLR + compila)
-2. En Eclipse: seleccionar proyecto → **F5** (Refresh)
-3. Ejecutar `Main.java` como Java Application
-
-> Si cambiás la gramática `.g4`, repetí el paso 1 desde terminal.
-
-## Gramática (resumen)
-
-```
-programa      → sentencia*
-sentencia     → declaracion | asignacion | mostrar | condicional | repetir
-declaracion   → 'coso' ID ':' tipo ('=' expresion)? ';'
-asignacion    → ID '=' expresion ';'
-mostrar       → 'mostrar' '(' expresion ')' ';'
-condicional   → 'si' '(' expresion ')' '{' sentencia* '}' ('sino' '{' sentencia* '}')?
-repetir       → 'repetir' '{' sentencia* '}' 'hasta' '(' expresion ')' ';'
-expresion     → logica_o (operador)*  (precedencia: *, / > +, - > relacional > lógico)
-```
-
-## Tecnologías
-
-- **ANTLR 4.5.2** — generación de lexer/parser
-- **Java 8** — implementación del intérprete
-- **Maven** — gestión de dependencias y build

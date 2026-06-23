@@ -22,7 +22,7 @@ public class UnOp implements ASTNode {
 		switch (operador) {
 		case "!":
 			if (!(val instanceof Boolean)) {
-				throw new RuntimeException("Error semántico: Operador ! requiere un booleano");
+				throw new RuntimeException("Error semantico: Operador ! requiere un booleano");
 			}
 			return !((Boolean) val);
 		case "-":
@@ -32,7 +32,7 @@ public class UnOp implements ASTNode {
 			if (val instanceof Double) {
 				return -((Double) val);
 			}
-			throw new RuntimeException("Error semántico: Operador - requiere un número");
+			throw new RuntimeException("Error semantico: Operador - requiere un numero");
 		default:
 			throw new RuntimeException("Operador unario desconocido: " + operador);
 		}
@@ -41,4 +41,6 @@ public class UnOp implements ASTNode {
 	public String getOperador() {
 		return operador;
 	}
+
+	public ASTNode getOperando() { return operando; }
 }
